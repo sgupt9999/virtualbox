@@ -1,0 +1,30 @@
+#!/bin/bash
+# This script will create a static IP on a virtualbox RHEL/Centos instance attached an internal network
+# It seems DHCP doesnt work on instances attached to an internal network
+
+# Start of user inputs
+NEW_CONN="test"
+IFNAME="enp0s3"
+STATIC_IP="10.0.2.20/24"
+GATEWAY="10.0.2.2"
+DNS="10.0.0.1"
+# End of user inputs
+
+
+
+if [[ $EUID != "0" ]]
+then
+	echo "ERROR. You need to have root privileges to run this script"
+	exit 1
+fi
+
+# Delete existing connection
+OLD_CONN=`nmcli connection show | grep ethernet | cut -f1 -d" "`
+if [ $? == "0" ]
+then
+	nmcli connection delete $OLD_CONN
+fi
+
+
+nmcli connection add con-name $NEW_CONN type ethernet ifname $IFNAME ipv4.addresses $STATIC_IP ipv4.gateway $GATEWAY ipv4.dns $DNS ipv4.method manual autoconnect true
+nmcli connection up $NEW_CONN
