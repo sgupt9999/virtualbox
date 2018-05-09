@@ -2,15 +2,16 @@
 All virtualbox setup scripts
 ##########################################################################################
 internal_network.sh 
-DHCP doesnt seem to work on instances attached to an internal network
-This script will create a static IP address in the 10.0.2.0/24 network
-To assign addresses to additional instances, just increment the IP address, keeping all else the same
+1. DHCP doesnt seem to work on instances attached to an internal network
+2. This script will create a static IP address in the 10.0.2.0/24 network
+3. To assign addresses to additional instances, just increment the IP address, keeping all else the same
 ##########################################################################################
 Setup an instance as a router
 Setup -
 1. Create instance attached to an internal network. 
 2. Server instance has 2 nics. One is on the same internal network and the second one has a public facing address.
 3. Make the server act as a router, so the internal network can have a public outlet
+#########
 Steps -
 1. Create client and server instances attached to the same internal network
 2. Run internal_network.sh on both instances with different IP addresses. Reboot client and server and make sure
