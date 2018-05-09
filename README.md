@@ -12,6 +12,7 @@ Setup -
 2. Server instance has 2 nics. One is on the same internal network and the second one has a public facing address.
 3. Make the server act as a router, so the internal network can have a public outlet
 #########
+
 Steps -
 1. Create client and server instances attached to the same internal network
 2. Run internal_network.sh on both instances with different IP addresses. Reboot client and server and make sure
