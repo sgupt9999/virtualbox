@@ -1,11 +1,13 @@
 #!/bin/bash
-# Setup a linux server as a router. Allow instances on an internal network to connect to internet via this server
-# The routing needs to be changed on the client machines to send traffic to the router machine
+# Delete the default route for the private network through the default gateway
+# All external traffic from private network is routed to the public network using server_router_setup.sh
 
 # Start of user inputs
+#################################################
 PRIVATEIFNAME="enp0s3"
-# Router IP is on the same network as the client, but on the linux server
+# Router IP is default gateway on the private network
 ROUTERIP="10.0.2.2"
+#################################################
 # End of user inputs
 
 

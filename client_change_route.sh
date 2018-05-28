@@ -1,12 +1,13 @@
 #!/bin/bash
-# Setup a linux server as a router. Allow instances on an internal network to connect to internet via this server
-# The routing needs to be changed on the client machines to send traffic to the router machine
+# This script changes the default route to go via the router machine instance of default gateway
 
 # Start of user inputs
+##########################################################################################
 IFNAME="enp0s3"
-# Router IP is on the same network as the client, but on the linux server
+# Router IP is the IP of the server instance on the same network as the client
 NEWROUTERIP="10.0.2.10"
 OLDROUTERIP="10.0.2.2"
+##########################################################################################
 # End of user inputs
 
 
@@ -20,7 +21,7 @@ fi
 rm -rf /usr/local/src/routes.sh
 cat << EOF > /usr/local/src/routes.sh
 #!/bin/bash
-# Adding the route for via the new router and deleting the old one
+# Adding the route to send default traffic via the instance acting as a router and deleteing the route via default gateway
 ip route add default via $NEWROUTERIP dev $IFNAME
 ip route del default via $OLDROUTERIP dev $IFNAME
 EOF

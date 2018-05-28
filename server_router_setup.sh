@@ -1,5 +1,5 @@
 #!/bin/bash
-# This script will make all the iptable or firewall changes to setup a server as a router
+# This script will make all the iptable or firewall changes to setup a server as a router and transfer all traffic from private to public network
 # If going with iptables then the changes are not persistent
 
 # Start of user inputs
